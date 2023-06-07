@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+namespace:名称空间,指向包里的文件
+-->
+<mapper namespace="com.song.mybatis.mapper.BrandMapper">
+
+    <!--    数据库表的字段名称 和 实体类的属性名称不一样 则不能自动封装数据
+            起别名，对不一样的列起别名，让别名和实体类的属性名一样
+            缺点：每次查询都要定义因此别名
+            sql片段
+            缺点：不灵活
+            resultMap：
+            定义在<resultMap>标签中
+            在<select>标签中，使用resultMap属性替换 resultType属性
+    -->
+
+    <!--sql片段-->
+    <!--    <sql id="brand_column">-->
+    <!--        id,brand_name as brandName,company_name companyName,ordered,description,status-->
+    <!--    </sql>-->
+
+    <!--    sql片段查询-->
+    <!--    <select id="selectAll" resultType="brand">-->
+    <!--        select-->
+    <!--        <include refid="brand_column" />-->
+    <!--        from tb_brand;-->
+    <!--    </select>-->
+
+    <!--普通查询-->
+    <!--    <select id="selectAll" resultType="Brand">-->
+    <!--        select id,brand_name as brandName,company_name companyName,ordered,description,status from tb_brand;-->
+
+    <!--    </select>-->
+
+    <!--
+    =====================================================
+            resultMap
+            id: 唯一表示
+            type:映射的类型，支持别名，不分大小写，前置条件 需要在config文件中配置了自定义导入包<typeAliases>
+      -->
+    <resultMap id="brandResultMap" type="brand">
+        <!--
+                id：完成主键字段的映射
+                    column：表的列名
+                    property：实体类的属性名
+
+                result：完成一般字段的映射
+                    column：表的列名
+                    property：实体类的属性名
+                    因为有特殊字符 _ 获取不到 所以使用别名字brandName
+
+            -->
+        <result column="brand_name" property="brandName"/>
+        <result column="company_name" property="companyName"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="brandResultMap">
+        select *
+        from tb_brand;
+    </select>
+
+    <!--    查询id的方法
+            #{}:mybatis提供的参数占位符，会将#{}自动替换为？，用来设置自动参数，底层使用PreparedStatement-安全不会存在sql注入
+            ${} ：拼接SQL。底层使用的是 Statement，会存在SQL注入问题。
+            使用时机：
+                    参数传递时使用：#{}
+                    表名或列名不固定的情况使用${} 会存在sql注入问题
+             <select id="selectById" parameterType="int" resultMap="brandResultMap">
+              parameterType：指定参数类型，可以省略不写
+            特殊字符处理：
+                      转义字符： &lt; 字符少的时候可以使用这个
+                      CDATA: <![CDATA[内容]]> cd 内容里面的会当初文本处理
+    -->
+    <select id="selectById" resultMap="brandResultMap">
+        select *
+        from tb_brand b
+        where b.id &lt; #{id};
+    </select>
+
+    <!--    多条件查询-->
+    <select id="selectByCondition" resultMap="brandResultMap">
+        select * from tb_brand
+        where status = #{staus}
+          and company_name like #{companyName}
+          and brand_name like #{brandName}
+
+    </select>
+
+    <!--    动态sql：根据用户输入的条件进行判断来执行写法
+    例如用户只输入 当前状态 时，SQL语句就是
+    ```sql
+    select * from tb_brand where status = #{status}
+    而用户如果只输入企业名称时，SQL语句就是
+    ```sql
+    select * from tb_brand where company_name like #{companName}
+    而用户如果输入了 `当前状态` 和 `企业名称 ` 时，SQL语句又不一样
+    ```sql
+    select * from tb_brand where status = #{status} and company_name like #{companName}
+    ==========================================================================================
+       <where>作用：
+        替换where关键字
+        会动态的去掉第一个条件前的 and
+        如果所有的参数没有值则不加where关键字
+        需要给每个条件前都加上 and 关键字。
+    -->
+    <select id="selectByConditionDynamic" resultMap="brandResultMap">
+        select * from tb_brand
+        <where>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="companyName != null and companyName != '' ">
+                and company_name like #{companyName}
+            </if>
+            <if test="brandName != null and brandName != '' ">
+                and brand_name like #{brandName}
+            </if>
+        </where>
+    </select>
+
+    <!--单条件查询
+        可根据方法中判断进行选取数据执行，模拟客户只输入一个数据时的操作
+    -->
+    <select id="selectByConditionSingle" resultMap="brandResultMap">
+        select * from tb_brand
+        <where>
+            <choose><!--相当于switch-->
+                <when test="status != null"><!--相当于case-->
+                    and status = #{status}
+                </when>
+                <when test="companyName != null and companyName != ''">
+                    and company_name like #{companyName}
+                </when>
+                <when test="brandName != null and brandName != ''">
+                    and brand_name like #{brandName}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <!--    添加数据方法
+            参数：除了id之外的所有的数据。id对应的是表中主键值，而主键我们是 ==自动增长== 生成的。
+    -->
+    <insert id="add">
+        insert into tb_brand (brand_name, company_name, ordered, description, status)
+            value (#{brandName},#{companyName},#{ordered},#{description},#{status});
+    </insert>
+
+    <!--    设置主键返回
+    useGeneratedKeys="true" 是够获取自动增长的主键值。true表示获取
+    keyProperty="id" 指定将获取到的主键值封装到哪儿个属性里
+    -->
+    <insert id="addKey" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_brand (brand_name, company_name, ordered, description, status)
+        values (#{brandName}, #{companyName}, #{ordered}, #{description}, #{status});
+    </insert>
+
+    <!--  修改表中数据
+    如：如果哪儿个输入框没有输入内容，我们是将表中数据对应字段值替换为空白还是保留字段之前的值？答案肯定是保留之前的数据。
+    set* 标签可以用于动态包含需要更新的列，忽略其它不更新的列。
+    -->
+    <update id="update">
+        update tb_brand
+        <set>
+            <if test="brandName != null and brandName != ''">
+                brand_name = #{brandName},
+            </if>
+            <if test="companyName != null and companyName != ''">
+                company_name = #{companyName},
+            </if>
+            <if test="ordered != null">
+                ordered = #{ordered},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description},
+            </if>
+            <if test="status != null">
+                status = #{status}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+<!--    根据id删除一行数据-->
+    <delete id="deleteById">
+        delete from tb_brand where id = #{id};
+    </delete>
+
+<!--
+        删除多行数据
+        遍历数组来拼接SQL语句，Mybatis 提供了 `foreach` 标签
+        - collection 属性：
+
+        - mybatis会将数组参数，封装为一个Map集合。
+        - 默认：array = 数组
+
+        - 使用@Param注解改变map集合的默认key的名称
+        在定义方法的括号中使用了注解 就可以collection="array"定义了注解后 这里就可以输入你的数组名字了
+        - item 属性：本次迭代获取到的元素。
+        - separator 属性：集合项迭代之间的分隔符。`foreach` 标签不会错误地添加多余的分隔符。也就是最后一次迭代不会加分隔符。
+        - open 属性：该属性值是在拼接SQL语句之前拼接的语句，只会拼接一次
+        - close 属性：该属性值是在拼接SQL语句拼接后拼接的语句，只会拼接一次
+
+        假如数组中的id数据是{1,2,3}，那么拼接后的sql语句就是：delete from tb_brand where id in (1,2,3);
+-->
+    <delete id="deleteByIds">
+        delete from tb_brand where id in
+            <foreach collection="array" item="id" separator="," open="(" close=")">
+                #{id}
+            </foreach>
+            ;
+    </delete>
+
+
+</mapper>

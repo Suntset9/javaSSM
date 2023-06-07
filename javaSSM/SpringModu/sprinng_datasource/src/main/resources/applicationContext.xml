@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+        ">
+
+<!--    管理druid连接池-->
+<!--        <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--            <property name="driverClassName" value="com.mysql.jdbc.Driver"/>-->
+<!--            <property name="url" value="jdbc:mysql://localhost:3306/spring_db"/>-->
+<!--            <property name="username" value="root"/>-->
+<!--            <property name="password" value="123456"/>-->
+<!--        </bean>-->
+    <!--    管理c3p0连接池-->
+<!--    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+<!--        <property name="driverClass" value="com.mysql.jdbc.Driver"/>-->
+<!--        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/spring_db"/>-->
+<!--        <property name="user" value="root"/>-->
+<!--        <property name="password" value="123456"/>-->
+<!--        <property name="maxPoolSize" value="1000"/>-->
+<!--    </bean>-->
+
+
+<!--    加载properties文件
+        目的：将数据库的连接参数抽取到一个单独的文件中，与Spring配置文件解耦。
+-->
+
+<!--    1.开启context命名空间-->
+<!--    2.使用context空间加载properties文件-->
+                                    <!--    加载多个文件方法-->
+<!--    <context:property-placeholder location="jdbc.properties" system-properties-mode="NEVER"/>-->
+<!--    <context:property-placeholder location="jdbc.properties,jdbc2.properties" system-properties-mode="NEVER"/>-->
+<!--    <context:property-placeholder location="jdbc.properties,jdbc2.properties" />-->
+<!--    <context:property-placeholder location="*.properties" system-properties-mode="NEVER"/>-->
+<!--  都写这种最好：规范格式：classpath:*properties，只加载当前项目中的文件，其他导入的jar包等不会添加
+        classpath*:*properties：会加载导入的jar包中的文件，一般从别人那里的项目的文件也会获取到，
+        根据需要选择自己需要的方式
+     <context:property-placeholder location="classpath:*properties" system-properties-mode="NEVER"/>-->
+
+<!--    classpath:*.properties  ：   设置加载当前工程类路径中的所有properties文件-->
+<!--    system-properties-mode属性：是否加载系统属性 -->
+    <!--    配置不加载系统属性
+            如果属性文件中配置的不是jdbc.username，
+            而是username=root666，那么使用${username}获取到的不是root666，而是计算机的名称。
+            系统属性的优先级比我们属性文件中的高，替换了我们的username=root666。
+            解决1：换一个名称，例如不叫username，叫jdbc.username。
+            解决2：使用system-properties-mode="NEVER"属性表示不使用系统属性。
+-->
+    <context:property-placeholder location="classpath:*properties" system-properties-mode="NEVER"/>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="password" value="${jdbc.username}"/>
+        <property name="maxPoolSize" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="bookDao" class="com.song.dao.impl.BookDaoImpl">
+        <property name="name" value="${username}"/>
+    </bean>
+
+
+
+
+</beans>

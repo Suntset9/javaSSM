@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+<!--
+namespace:名称空间
+-->
+<mapper namespace="com.song.mybatis.mapper.UserMapper">
+
+    <!--
+=====================================================
+        resultMap
+        id: 唯一表示
+        type:映射的类型，支持别名，不分大小写
+  -->
+    <resultMap id="userResultMap" type="user">
+        <!--
+                id：完成主键字段的映射
+                    column：表的列名
+                    property：实体类的属性名
+
+                result：完成一般字段的映射
+                    column：表的列名
+                    property：实体类的属性名
+                    因为有特殊字符 _ 获取不到 所以使用别名字brandName
+
+            -->
+<!--        <result column="brand_name" property="brandName"/>-->
+<!--        <result column="company_name" property="companyName"/>-->
+    </resultMap>
+
+    <select id="selectAll" resultMap="userResultMap">
+       select * from tb_user;
+    </select>
+
+    <!-- 设置多个参数，接收多个参数需要使用@Param注解，
+    或
+        	username=#{param1}
+    	and password=#{param2}
+    	两种写法
+    -->
+    <select id="select" resultMap="userResultMap">
+        select * from tb_user
+        where username=#{arg0}
+          and password=#{arg1};
+    </select>
+
+<!-- 在 `username` 参数前加上 `@Param` 注解
+Mybatis 在封装 Map 集合时，键名就会变成如下：
+> map.put("username"，参数值1);
+> map.put("arg1"，参数值2);
+> map.put("param1"，参数值1);
+> map.put("param2"，参数值2);
+接口参数是多个时，在每个参数上都使用 `@Param` 注解。这样代码的可读性更高。==
+ -->
+    <select id="select1" resultMap="userResultMap">
+        select * from tb_user
+        where username=#{username}
+          and password=#{password};
+    </select>
+
+<!--    map键值对获取数据，map一个键对应多个value时使用 键.xx，例：user.username
+-->
+    <select id="selectMap" resultMap="userResultMap">
+        select * from tb_user
+        where username=#{user.username}
+          and password=#{user.password};
+    </select>
+</mapper>
