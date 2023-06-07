@@ -1,6 +1,7 @@
 package com.song.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.song.dao.BookDao;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,8 +41,10 @@ public class jdbcConfig {
     private String password;
     //2.@Bean：表示当前方法的返回值是一个bean对象，添加到IOC容器中
     //Spring会自动从IOC容器中找到BookDao对象赋值给参数bookDao变量，如果没有就会报错。
+    //引用类型BookDao bookDao，自动装配
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource(BookDao bookDao){
+        System.out.println(bookDao);
         DruidDataSource ds = new DruidDataSource();
         ds.setDriverClassName(driver);
         ds.setUrl(url);

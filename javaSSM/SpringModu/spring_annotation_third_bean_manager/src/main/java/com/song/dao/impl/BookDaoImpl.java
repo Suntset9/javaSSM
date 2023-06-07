@@ -1,7 +1,9 @@
 package com.song.dao.impl;
 
 import com.song.dao.BookDao;
+import org.springframework.stereotype.Repository;
 
+@Repository//按类型定义bean
 public class BookDaoImpl implements BookDao {
 
     @Override

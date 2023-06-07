@@ -2,6 +2,7 @@ package com.song.config;
 
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.song.dao.impl.BookDaoImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -27,9 +28,9 @@ import javax.sql.DataSource;
  * 只要com.song.config包扫到了就行，三个包可以合并写成com.song
  */
 @Configuration
-//@ComponentScan("com.song")//会扫描这个文件下所有的包
+//@ComponentScan("com.song")//会扫描这个文件下所有的包获取bean
 
-@Import({jdbcConfig.class}) //建议使用这种模式
+@Import({jdbcConfig.class, BookDaoImpl.class}) //建议使用这种模式，指定类获取bean
 public class SpringConfig {
     //这里只放spring配置的信息，像其他的连接的对象等都新建文件来放
 
