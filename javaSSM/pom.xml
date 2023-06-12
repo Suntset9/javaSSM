@@ -15,6 +15,7 @@
         <module>SpringModu/sprinng_datasource</module>
         <module>SpringModu/spring_annotation</module>
         <module>SpringModu/spring_annotation_third_bean_manager</module>
+        <module>SpringModu/spring_mybais</module>
     </modules>
 
     <properties>
