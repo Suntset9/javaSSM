@@ -19,7 +19,7 @@ public class jdbcConfig {
     @Bean
     public DataSource dataSource(){
         DruidDataSource ds = new DruidDataSource();
-        ds.setDriverClassName(driver);
+//        ds.setDriverClassName(driver);//jdbc.driver=com.mysql.jdbc.Driver已被废弃使用，新驱动是com.mysql.cj.jdbc.Driver，驱动程序通常会通过SPI（Service Provider Interface）自动注册，因此手动加载驱动程序类通常是不必要的。
         ds.setUrl(url);
         ds.setUsername(userName);
         ds.setPassword(password);
