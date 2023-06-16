@@ -16,6 +16,7 @@
         <module>SpringModu/spring_annotation</module>
         <module>SpringModu/spring_annotation_third_bean_manager</module>
         <module>SpringModu/spring_mybais</module>
+        <module>SpringModu/spring_aop_advice_type</module>
     </modules>
 
     <properties>
