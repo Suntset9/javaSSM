@@ -17,6 +17,9 @@
         <module>SpringModu/spring_annotation_third_bean_manager</module>
         <module>SpringModu/spring_mybais</module>
         <module>SpringModu/spring_aop_advice_type</module>
+        <module>SpringModu/spring_aop_advice_data</module>
+        <module>SpringModu/spring_case_handle_password</module>
+        <module>SpringModu/spring_case_transfer_log</module>
     </modules>
 
     <properties>
