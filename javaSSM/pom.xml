@@ -20,6 +20,8 @@
         <module>SpringModu/spring_aop_advice_data</module>
         <module>SpringModu/spring_case_handle_password</module>
         <module>SpringModu/spring_case_transfer_log</module>
+        <module>SpringMVC</module>
+        <module>SpringMVC/springMVC_quickstart</module>
     </modules>
 
     <properties>
