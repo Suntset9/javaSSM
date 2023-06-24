@@ -1,0 +1,15 @@
+[33m20d5fa2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{0}: commit: ssm注解开发——spring-AOP案例 -百度网盘密码数据兼容处理输入密码时尾部多输入的空格做兼容处理 +++Spring事务案例：转账业务追加日志，：实现任意两个账户间转账操作，并对每次转账操作在数据库进行留痕 f
+[33m95ed31f[m[33m ([m[1;31morigin/master[m[33m)[m HEAD@{1}: commit: ssm注解开发——spring-AOP案例 -百度网盘密码数据兼容处理输入密码时尾部多输入的空格做兼容处理 +++Spring事务案例：转账业务追加日志，：实现任意两个账户间转账操作，并对每次转账操作在数据库进行留痕
+[33mbc68153[m HEAD@{2}: commit: ssm注解开发——spring-AOP案例 -百度网盘密码数据兼容处理输入密码时尾部多输入的空格做兼容处理 +++Spring事务案例：转账业务追加日志，：实现任意两个账户间转账操作，并对每次转账操作在数据库进行留痕
+[33m9462588[m HEAD@{3}: commit: ssm注解开发——spring-AOP通知类型 --测量业务层接口万次执行效率，实际开发中前端等各种返回时间造成时间延迟更久 这里测试不准
+[33md680bd0[m HEAD@{4}: commit: ssm注解开发——spring-AOP通知类型 --完成了aop得各种通知学习其中环绕通知为重点：手动调用切入点方法并对其进行增强的通知方式。
+[33m01fa272[m HEAD@{5}: commit: ssm注解开发管理第三方Bean——完成了对mybatis的整合-junit-version01-：com.mysql.jdbc.Driver类已被弃用，新的驱动类是com.mysql.cj.jdbc.Driver，驱动程序通常会通过SPI（Service Provider Interface）自动注册，因此手动加载驱动程序类通常是不必要的。
+[33m2adabb9[m HEAD@{6}: commit: ssm注解开发管理第三方Bean——完成了对mybatis的整合
+[33mfb876c3[m HEAD@{7}: commit: ssm注解开发管理第三方Bean——完成了对mybatis的整合
+[33md0bc5d6[m HEAD@{8}: commit: ssm注解开发管理第三方Bean——version01
+[33m2309a27[m HEAD@{9}: merge origin/master: Merge made by the 'ort' strategy.
+[33m395e03c[m HEAD@{10}: checkout: moving from 1ee6e46f8824d7f948faa553e3c1cdfa282e576f to master
+[33m1ee6e46[m HEAD@{11}: checkout: moving from master to origin/master
+[33m395e03c[m HEAD@{12}: commit: ssm注解开发管理第三方Bean
+[33m7730471[m HEAD@{13}: commit: ssm注解开发管理第三方Bean
+[33m12ca103[m HEAD@{14}: commit (initial): ssm三件套version01
