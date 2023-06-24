@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *
  */
 @Controller//定义表现层控制器bean
+@RequestMapping("/user")//类上方配置的请求映射与方法上面配置的请求映射连接在一起，形成完整的请求映射路径
 public class UserController {
     /**
      * name：@RequestMapping
-     * 类型：方法注解
+     * 类型：方法注解,类注解
      * 位置：springMVC控制器方法定义上方
-     * 作用：设置当前控制器方法请求访问路径
+     * 作用：设置当前控制器方法请求访问路径，如果设置在类上统一设置当前控制器方法请求访问路径前缀
      * value（默认）：请求访问路径
      * ===============================================
      * name：@ResponseBody
@@ -28,7 +29,7 @@ public class UserController {
      */
 
     //设置映射路径为/save，即外部访问路径
-    @RequestMapping("/user/save")
+    @RequestMapping("/save")
     //设置当前操作返回结果为指定json数据（本质上是一个字符串信息）
     @ResponseBody//告诉web这是响应体不是页面
     public String save(){
@@ -37,7 +38,7 @@ public class UserController {
     }
 
     //设置映射路径为/delete，即外部访问路径
-    @RequestMapping("/user/delete")
+    @RequestMapping("/delete")
     @ResponseBody
     public String delete(){
         System.out.println("user delete ...");
