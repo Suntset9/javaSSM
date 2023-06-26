@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 @Controller//请求参数
-@RequestMapping("/controller")
+//@RequestMapping("/controller")
 public class UserController {
 
     //普通参数：请求参数与形参名称对应即可完成参数传递
@@ -155,5 +155,17 @@ public class UserController {
         return "{'module':'data param'}";
     }
 
-
+    /**
+     * ===============================================================================
+     * 响应案例
+     *
+     */
+    //响应页面/跳转页面
+    //返回值为String类型，设置返回值为页面名称，即可实现页面跳转
+    //returen为跳转指定页面，
+    @RequestMapping("/booksCity/toJumpPage")
+    public String toJumpPage(){
+        System.out.println("跳转页面");
+        return "page.jsp";
+    }
 }
