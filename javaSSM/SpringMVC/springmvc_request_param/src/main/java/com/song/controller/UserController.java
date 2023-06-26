@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 @Controller//请求参数
-//@RequestMapping("/controller")
+@RequestMapping("/booksCity")
 public class UserController {
 
     //普通参数：请求参数与形参名称对应即可完成参数传递
@@ -93,9 +93,9 @@ public class UserController {
      * - 位置：SpringMVC控制器方法形参定义前面
      * - 作用：将请求中请求体所包含的数据传递给请求参数，此注解一个处理器方法只能使用一次
      *
-     * //集合参数：json格式
-     *     //1.开启json数据格式的自动转换，在配置类中开启@EnableWebMvc
-     *     //2.使用@RequestBody注解将外部传递的json数组数据映射到形参的保存实体类对象的集合对象中，要求属性名称一一对应
+     *   //集合参数：json格式
+     *   //1.开启json数据格式的自动转换，在配置类中开启@EnableWebMvc
+     *   //2.使用@RequestBody注解将外部传递的json数组数据映射到形参的集合对象中作为数据
      *
      * @param likes
      * @return
@@ -104,7 +104,7 @@ public class UserController {
     @ResponseBody
     public String listParamForJson(@RequestBody List<String> likes){
         System.out.println("POJO(josn)参数传递==》"+likes);
-        return "{'module':'list pojo for json param'}";
+        return "{'module':'list common for json param'}";
     }
 
     //POJO参数：json格式
@@ -165,7 +165,7 @@ public class UserController {
     //响应页面/跳转页面
     //返回值为String类型，设置返回值为页面名称，即可实现页面跳转
     //returen为跳转指定页面，
-    @RequestMapping("/booksCity/toJumpPage")
+    @RequestMapping("/toJumpPage")
     public String toJumpPage(){
         System.out.println("跳转页面");
         return "page.jsp";
