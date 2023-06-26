@@ -11,7 +11,7 @@ public class ServicetContainerlnitConfig extends AbstractAnnotationConfigDispatc
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{SpringConfig.class};
+        return new Class[]{SpringMvcConfig.class};
     }
 
     @Override

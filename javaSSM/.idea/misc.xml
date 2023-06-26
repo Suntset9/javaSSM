@@ -5,10 +5,12 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringMVC/springmvc_request_param/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/SpringMVC/SpringMVC_request_param/pom.xml" />
         <option value="$PROJECT_DIR$/SpringMVC/spring_quickstart/pom.xml" />
         <option value="$PROJECT_DIR$/SpringMVC/springmvc_quickstart/pom.xml" />
         <option value="$PROJECT_DIR$/SpringMVC/test/pom.xml" />
