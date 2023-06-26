@@ -1,5 +1,6 @@
 package com.song.controller;
 
+import com.song.domain.Address;
 import com.song.domain.User;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.sql.DataSource;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -168,4 +170,56 @@ public class UserController {
         System.out.println("跳转页面");
         return "page.jsp";
     }
+
+    //响应文本数据
+    //返回值为String类型，设置返回值为任意字符串信息，即可实现返回指定字符串信息，需要依赖@ResponseBody注解
+    @RequestMapping("/toText")
+    @ResponseBody
+    public String toText(){
+        System.out.println("返回纯文本数据");
+        return "response text";
+    }
+
+    @RequestMapping("/toJsonPOJO")
+    @ResponseBody
+    public User toJsonPOJO(){
+        System.out.println("返回json对象数据");
+        User user = new User();
+        user.setName("songsong");
+        user.setAge(18);
+        return user;
+    }
+
+    @RequestMapping("/toJsonList")
+    @ResponseBody
+    public List<Object> toJsonList(){
+        //System.out.println("返回Json集合数据");
+        //User user = new User();
+        //user.setName("宋宋");
+        //user.setAge(19);
+        //
+        //User user1 = new User();
+        //user1.setName("zz");
+        //user1.setAge(18);
+        //ArrayList<User> userArrayList = new ArrayList<>();
+        //userArrayList.add(user);
+        //userArrayList.add(user1);
+        //return userArrayList;
+
+
+        System.out.println("返回Json集合数据");
+        User user = new User();
+        user.setName("宋宋");
+        user.setAge(19);
+
+
+        Address address = new Address();
+        address.setProvince("guangdong");
+        address.setCity("qingyuan");
+        ArrayList<Object> objects = new ArrayList<>();
+        objects.add(user);
+        objects.add(address);
+        return objects;
+    }
+
 }
