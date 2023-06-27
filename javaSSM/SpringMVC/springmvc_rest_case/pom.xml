@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.example</groupId>
+        <artifactId>javaSSM</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+    <groupId>com.song</groupId>
+    <artifactId>springmvc_rest_case</artifactId>
+    <packaging>war</packaging>
+    <name>springmvc_rest_case Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <dependencies>
+<!--        注解依赖-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- javax.servlet-api 是 Java Servlet API 的规范实现，提供 Servlet 相关功能的支持 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope> <!-- provided 表示该依赖由容器提供，不需要打包进项目中 -->
+        </dependency>
+        <!-- spring-webmvc 是 Spring 框架提供的 Web MVC 框架，用于构建基于 Servlet 的 Web 应用程序 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.2.10.RELEASE</version>
+        </dependency>
+        <!-- jackson-databind 是 Jackson 数据绑定库的核心部分，提供 JSON 和 Java 对象之间的转换功能 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+
+    </dependencies>
+    <build>
+        <finalName>springmvc_rest_case</finalName>
+        <!--    设置tomcat服务器，加载web工程(tomcat插件） -->
+        <plugins> <!-- 插件配置 -->
+            <plugin> <!-- tomcat7-maven-plugin插件配置 -->
+                <groupId>org.apache.tomcat.maven</groupId> <!-- 插件所属groupId -->
+                <artifactId>tomcat7-maven-plugin</artifactId> <!-- 插件所属artifactId -->
+                <version>2.1</version> <!-- 插件版本号 -->
+                <configuration> <!-- 插件配置参数 -->
+                    <port>80</port> <!-- Tomcat服务器端口号 -->
+                    <path>/</path> <!-- 应用部署路径 -->
+                    <uriEncoding>UTF-8</uriEncoding><!--访问路径编解码字符集-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
