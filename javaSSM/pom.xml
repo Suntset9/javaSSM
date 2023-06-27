@@ -22,6 +22,7 @@
         <module>SpringModu/spring_case_transfer_log</module>
         <module>SpringMVC</module>
         <module>SpringMVC/springMVC_quickstart</module>
+        <module>SpringMVC/springMVC_rest_style</module>
     </modules>
 
     <properties>
