@@ -24,6 +24,7 @@
         <module>SpringMVC/springMVC_quickstart</module>
         <module>SpringMVC/springMVC_rest_style</module>
         <module>SpringMVC/springmvc_rest_case</module>
+        <module>SpringMVC/springmvc_ssm</module>
     </modules>
 
     <properties>
