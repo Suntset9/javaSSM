@@ -25,6 +25,7 @@
         <module>SpringMVC/springMVC_rest_style</module>
         <module>SpringMVC/springmvc_rest_case</module>
         <module>SpringMVC/springmvc_ssm</module>
+        <module>SpringMVC/springmvc_ssm_exception</module>
     </modules>
 
     <properties>

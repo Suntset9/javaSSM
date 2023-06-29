@@ -10,7 +10,7 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring_annotation_manager</artifactId>
+    <artifactId>spring_annotation</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
