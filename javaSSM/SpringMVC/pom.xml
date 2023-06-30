@@ -15,6 +15,7 @@
     <modules>
         <module>SpringMVC_bean_load</module>
         <module>springmvc_request_param</module>
+        <module>springmvc_interceptor</module>
     </modules>
 
     <properties>
