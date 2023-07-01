@@ -33,7 +33,7 @@ public class BookController {
     private Integer port;
     @Value("${enterprise.subject[0]}") // 从配置文件中读取名为enterprise.subject[0]的属性值
     private String subject;
-    @Value("${likes[0]}")
+    @Value("${enterprise.likes[0]}")
     private List<String> likes;
 
     // 使用Environment封装全配置数据
@@ -53,7 +53,7 @@ public class BookController {
         System.out.println(environment.getProperty("server.port")); // 使用Environment从配置文件中获取名为server.port的属性值
         System.out.println(environment.getProperty("enterprise.age")); // 使用Environment从配置文件中获取名为enterprise.age的属性值
         System.out.println(environment.getProperty("enterprise.subject[2]")); // 使用Environment从配置文件中获取名为enterprise.subject[1]的属性值
-        System.out.println(environment.getProperty("likes[1]"));
+        System.out.println(environment.getProperty("enterprise.likes[1]"));
         System.out.println("---------------------");
         System.out.println(enterprise); // 打印注入的Enterprise对象
         return "hello , spring boot!";

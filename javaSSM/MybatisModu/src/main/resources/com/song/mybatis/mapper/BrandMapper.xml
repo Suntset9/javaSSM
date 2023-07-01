@@ -72,7 +72,7 @@ namespace:名称空间,指向包里的文件
              <select id="selectById" parameterType="int" resultMap="brandResultMap">
               parameterType：指定参数类型，可以省略不写
             特殊字符处理：
-                      转义字符： &lt; 字符少的时候可以使用这个
+                      转义字符： &lt; `&lt;` 就是 `<` 的转义字符。字符少的时候可以使用这个
                       CDATA: <![CDATA[内容]]> cd 内容里面的会当初文本处理
     -->
     <select id="selectById" resultMap="brandResultMap">

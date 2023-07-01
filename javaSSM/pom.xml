@@ -26,6 +26,9 @@
         <module>SpringMVC/springmvc_rest_case</module>
         <module>SpringMVC/springmvc_ssm</module>
         <module>SpringMVC/springmvc_ssm_exception</module>
+        <module>SpringBoot</module>
+        <module>SpringBoot/springBoot_quickstart</module>
+        <module>SpringBoot/springBoot_maven_boot_profile</module>
     </modules>
 
     <properties>

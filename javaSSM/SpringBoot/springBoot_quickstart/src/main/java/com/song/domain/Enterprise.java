@@ -63,7 +63,7 @@ public class Enterprise {
         this.subject = subject;
     }
 
-    public void setLikes(@Value("${likes}") String[] likes) {
+    public void setLikes(/*@Value("${likes}")*/ String[] likes) {
         this.likes = likes;
     }
     public String[] getLikes() {
