@@ -8,15 +8,8 @@
         <option value="$PROJECT_DIR$/SpringMVC/springmvc_request_param/pom.xml" />
         <option value="$PROJECT_DIR$/SpringBoot/pom.xml" />
         <option value="$PROJECT_DIR$/SpringBoot/springBoot_quickstart/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringBoot/springBoot_maven_boot_profile/pom.xml" />
       </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/SpringMVC/SpringMVC_request_param/pom.xml" />
-        <option value="$PROJECT_DIR$/SpringMVC/spring_quickstart/pom.xml" />
-        <option value="$PROJECT_DIR$/SpringMVC/springmvc_quickstart/pom.xml" />
-        <option value="$PROJECT_DIR$/SpringMVC/test/pom.xml" />
-      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
