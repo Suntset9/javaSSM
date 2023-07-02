@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/mybatisplus_db #?serverTimezone=UTC
+    username: root
+    password: 123456
+  main:
+    banner-mode: console # 关闭Spring启动图标(banner)
+
+# 开启mp的日志（输出到控制台）[StdOutImpl] MyBatis Plus执行的SQL语句以及相关日志信息。
+#org.apache.ibatis.logging.slf4j.Slf4jImpl可以将日志输出到Slf4j日志框架，
+# org.apache.ibatis.logging.log4j.Log4jImpl可以将日志输出到Log4j日志框架等。
+# mybatis-plus日志控制台输出
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 取消SpringBoot启动banner图标
+  global-config:
+    banner: off
+    db-config:
+      #  指定主键的生成方式
+      id-type: auto
+      #  指定数据库表的前缀为tbl_
+      table-prefix: tbl_
+      # 逻辑删除字段名
+      logic-delete-field: deleted
+      # 逻辑删除字面值：未删除为0
+      logic-not-delete-value: 0
+      # 逻辑删除字面值：删除为1
+      logic-delete-value: 1
