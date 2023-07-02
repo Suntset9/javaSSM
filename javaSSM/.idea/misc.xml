@@ -11,6 +11,9 @@
         <option value="$PROJECT_DIR$/SpringBoot/springBoot_maven_boot_profile/pom.xml" />
         <option value="$PROJECT_DIR$/SpringBoot/springBoot_test/pom.xml" />
         <option value="$PROJECT_DIR$/SpringBoot/springBoot_mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringBoot/SpringBoot_ssm/pom.xml" />
+        <option value="$PROJECT_DIR$/Mybatis_Plus/pom.xml" />
+        <option value="$PROJECT_DIR$/Mybatis_Plus/MybatisPlus_quickstart/pom.xml" />
       </list>
     </option>
   </component>

@@ -11,6 +11,7 @@
     </typeAliases>
 
 
+
 <!--environments:配置数据连接环境信息,可以配置多个enviroment,通过default属性切换不同的environment
 属性 type="POOLED"代表采用 MyBatis 内部提供的连接池方式，最后定义一些关于 JDBC 的属性信息。
 -->
